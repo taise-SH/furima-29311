@@ -27,15 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| nickname       | string  | null: false |
-| email          | string  | null: false |
-| password       | string  | null: false |
-| last_name      | string  | null: false |
-| first_name     | string  | null: false |
-| last_name_kata | string  | null: false |
-| birthday       | integer | null: false |
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| nickname        | string  | null: false |
+| email           | string  | null: false |
+| password        | string  | null: false |
+| last_name       | string  | null: false |
+| first_name      | string  | null: false |
+| last_name_kata  | string  | null: false |
+| first_name_kata | string  | null: false |
+| birthday        | date    | null: false |
 
 ### Association
 
@@ -49,7 +50,6 @@ Things you may want to cover:
 | user          | string   | null: false, foreign_key: true |
 | name          | string   | null: false                    |
 | explanation   | string   | null: false                    |
-| image         | text     | null: false                    |
 | category      | integer  | null: false                    |
 | condition     | integer  | null: false                    |
 | postage_payer | integer  | null: false                    |
@@ -60,20 +60,20 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :users
-- has_one    :purchases
+- has_one    :purchase
 
 ## purchases テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| item   | references | null: false                    |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one    :addresses
+- belongs_to :user
+- belongs_to :item
+- has_one    :addresse
 
 ## addresses テーブル
 
@@ -88,5 +88,5 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
 
