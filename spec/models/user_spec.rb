@@ -57,16 +57,34 @@ describe User do
         expect(@user.errors.full_messages).to include("First name kata can't be blank")
       end
 
+      it "first_name_kataがカタカナ以外では登録ができいない" do
+        @user.first_name_kata = "あああ嗚呼"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kata is invalid")
+      end
+
       it "last_name_kataが空では登録できない" do
         @user.last_name_kata = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kata can't be blank")
       end
 
+      it "last_name_kataがカタカナ以外では登録ができいない" do
+        @user.last_name_kata = "あああ嗚呼"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kata is invalid")
+      end
+
       it "emailが空では登録できない" do
         @user.email = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
+
+      it "emailに＠がないと登録できない" do
+        @user.email = "aaa.aaa.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
 
       it "重複したemailが存在する場合登録できない" do
@@ -76,6 +94,7 @@ describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+
       it "passwordが空では登録できない" do
         @user.password = ""
         @user.valid?
