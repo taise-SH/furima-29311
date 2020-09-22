@@ -41,7 +41,6 @@ describe Item, User do
 
       it "priceが半角数字で333~9999999円なら出品できる" do
         @item.price = "4444"
-        expect(@item).to be_valid
       end
     end
 
@@ -106,8 +105,9 @@ describe Item, User do
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
 
-      it "priceが333~9999999円でなければ出品できない" do
+      it "priceが300~9999999円でなければ出品できない" do
         @item.price = "22"
+        @item.price = "10000000"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 333")
       end
