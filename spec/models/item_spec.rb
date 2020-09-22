@@ -10,39 +10,9 @@ describe Item, User do
 
   describe '商品出品' do
     context '商品出品がうまくいくとき' do
-      it "name, explanation, image, priceが存在すれば出品できる" do
+      it "name, explanation, image, price, category, condition, delivery_day, postage_payer, prefectureが存在すれば出品できる" do
         expect(@item).to be_valid
       end
-    
-      it "categoryが--以外ならば出品できる" do
-        @item.category_id = 2
-        expect(@item).to be_valid
-      end
-
-      it "conditionが--以外ならば出品できる" do
-        @item.condition_id = 2
-        expect(@item).to be_valid
-      end
-
-      it "delivery_dayが--以外ならば出品できる" do
-        @item.delivery_day_id = 2
-        expect(@item).to be_valid
-      end
-
-      it "postage_payerが--以外ならば出品できる" do
-        @item.postage_payer_id = 2
-        expect(@item).to be_valid
-      end
-
-      it "prefectureが--以外ならば出品できる" do
-        @item.prefecture_id = 2
-        expect(@item).to be_valid
-      end
-
-      it "priceが半角数字で333~9999999円なら出品できる" do
-        @item.price = "4444"
-      end
-    end
 
     context '商品出品ができないとき' do
       it "nameが空では出品できない" do
