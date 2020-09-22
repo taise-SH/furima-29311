@@ -6,7 +6,7 @@ function calculation() {
   const tagOutputTotal = document.getElementById('profit');
 
   tagInput.addEventListener('input', function(){
-    var str = this.value;
+    let str = this.value;
     let fee_price = str * fee;
     let num = Math.round(fee_price);
     tagOutput.innerHTML = num;
