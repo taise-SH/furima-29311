@@ -27,8 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def delete
-    @item = Item.find(params[:id])
-    @item.delete
+   
   end
 
   
