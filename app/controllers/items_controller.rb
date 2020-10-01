@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :item_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.valid?
+      @item.save
       redirect_to root_path
     else
       render :new
@@ -41,15 +42,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  
   private
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
-  
+
   def item_params
     params.require(:item).permit(:name, :explanation, :image, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :delivery_day_id, :price).merge(user_id: current_user.id)
   end
@@ -58,5 +56,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-
-
