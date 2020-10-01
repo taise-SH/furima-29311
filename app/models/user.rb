@@ -5,14 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  has_many :purchases
+  has_many :orders
 
+  validates :nickname, :birthday, presence: true
 
-  validates :nickname, :birthday ,presence: true
-  
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX }
- 
+
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
     validates :first_name
     validates :last_name
@@ -22,7 +21,4 @@ class User < ApplicationRecord
     validates :first_name_kata
     validates :last_name_kata
   end
-
-  
 end
-
