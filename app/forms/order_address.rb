@@ -12,9 +12,6 @@ class OrderAddress
     validates :phone_number, format: { with: /\d{11}/, message: "is invalid. Within 11 digits"} 
   end
 
-  validates :city, presence: { message: "can't be blank" }
-  validates :address, presence: { message: "can't be blank" }
-
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create( post_cord: post_cord, city: city, address: address, prefecture_id: prefecture_id, building_name: building_name, phone_number: phone_number, order_id: order.id)
