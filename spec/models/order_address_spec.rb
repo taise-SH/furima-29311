@@ -31,13 +31,13 @@ RSpec.describe OrderAddress, type: :model do
     it 'cityが空だと保存できない' do
       @order_address.city = nil
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("City can't be blank")
+      expect(@order_address.errors.full_messages).to include("City can't be blak")
     end
 
     it 'addressが空だと保存できない' do
       @order_address.address = nil
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Address can't be blank")
+      expect(@order_address.errors.full_messages).to include("Address can't be blak")
     end
 
     it 'building_nameは空でも保存できる' do
@@ -49,6 +49,12 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.phone_number = nil
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number can't be blak", "Phone number is invalid. Within 11 digits")
+    end
+
+    it 'phone_numberはハイフンが含まれていると保存できない' do
+      @order_address.phone_number = "080-1234-5678"
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone number is invalid. Within 11 digits")
     end
 
     it 'phone_numberは12以上では保存できない' do
