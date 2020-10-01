@@ -8,14 +8,12 @@ class OrderAddress
     validates :post_cord, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city
     validates :address
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank"}
     validates :phone_number, format: { with: /\d{11}/, message: "is invalid. Within 11 digits"} 
   end
 
   validates :city, presence: { message: "can't be blank" }
   validates :address, presence: { message: "can't be blank" }
-
-  validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank"}
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
