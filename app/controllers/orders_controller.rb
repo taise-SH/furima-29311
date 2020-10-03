@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     if @orders.valid?
       pay_item
       @orders.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @price,
       card: order_params[:token],
@@ -42,10 +42,6 @@ class OrdersController < ApplicationController
 
   def not_transition
     item = Item.find(params[:item_id])
-    if current_user && item.user_id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user && item.user_id == current_user.id
   end
-
 end
-
