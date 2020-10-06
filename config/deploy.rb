@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "furima-23911"
+set :application, "furima-29311"
 
 set :repo_url, "git@github.com:taise-SH/furima-29311.git"
 
