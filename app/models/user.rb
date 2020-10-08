@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments
 
   validates :nickname, presence: true
-  validates :birthday, presence: { message: "生年月日を空白にすることはできません" }
+  validates :birthday, presence: true #{ message: "生年月日を空白にすることはできません" }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX }

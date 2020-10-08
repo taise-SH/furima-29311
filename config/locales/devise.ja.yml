@@ -2,11 +2,6 @@ ja:
   activerecord:
     attributes:
       user:
-        nickname: ニックネーム
-        first_name: 苗字
-        last_name: 名前
-        first_name_kata: 苗字(カタカナ)
-        last_name_kata: 名前(カタカナ)
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -30,25 +25,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-      item: 
-        name: 商品名
-        explanation: 商品の説明
-        image: 商品画像
-        price: 販売価格
-        category_id: カテゴリー
-        condition_id: 商品の状態
-        postage_payer_id: 配送料の負担者
-        prefecture_id: 発送元の地域
-        delivery_day_id: 発送までの日数
-  activemodel:
-    attributes:
-      order_address:
-        token: クレジットカード情報
-        post_cord: 郵便番号
-        prefecture_id: 都道府県
-        city: 市区町村
-        address: 番地
-        phone_number: 電話番号
     models:
       user: ユーザ
   devise:
