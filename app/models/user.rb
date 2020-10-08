@@ -6,8 +6,10 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
+  has_many :comments
 
-  validates :nickname, :birthday, presence: true
+  validates :nickname, presence: true
+  validates :birthday, presence: { message: "生年月日を空白にすることはできません" }
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: PASSWORD_REGEX }
