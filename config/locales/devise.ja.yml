@@ -7,7 +7,6 @@ ja:
         last_name: 名前
         first_name_kata: 苗字(カタカナ)
         last_name_kata: 名前(カタカナ)
-        birthday: 生年月日
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
